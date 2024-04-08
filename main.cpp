@@ -94,6 +94,8 @@ Shape* ball;
 glm::vec2 ball_velocity;
 float ballSpeed = 0.02f;
 
+float speed = 0.02f;
+
 Shape* player1;
 Shape* player2;
 
@@ -156,18 +158,20 @@ int main()
         glfwPollEvents();
         glClear(GL_COLOR_BUFFER_BIT);
 
+        speed = ballSpeed * 1.5;
+
         if (glfwGetKey(window, GLFW_KEY_W)  == GLFW_PRESS)
-            player1->position.y += ballSpeed;
+            player1->position.y += speed;
         if (glfwGetKey(window, GLFW_KEY_S)  == GLFW_PRESS)
-            player1->position.y -= ballSpeed;
+            player1->position.y -= speed;
 
         player1->position.y = glm::clamp(player1->position.y, -0.8f, 0.8f);
 
         
         if (glfwGetKey(window, GLFW_KEY_UP)  == GLFW_PRESS)
-            player2->position.y += ballSpeed;
+            player2->position.y += speed;
         if (glfwGetKey(window, GLFW_KEY_DOWN)  == GLFW_PRESS)
-            player2->position.y -= ballSpeed;
+            player2->position.y -= speed;
 
         player2->position.y = glm::clamp(player2->position.y, -0.8f, 0.8f);
 
